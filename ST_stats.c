@@ -1165,20 +1165,35 @@ void stat_Output_AllBmass(void) {
       }
     }
 
-    if (BmassFlags.sppb) {
-      ForEachSpecies(sp) {
-        sprintf(tbuf, "%f%c",
-                _get_avg( &_Spp[sp].s[yr-1]), sep);
-        strcat( buf, tbuf);
+		if (BmassFlags.sppb)
+		{
+			for ((sp) = 0; (sp) < Globals.sppCount - 1; (sp)++)
+			{
+				sprintf(tbuf, "%f%c", _get_avg(&_Spp[sp].s[yr - 1]), sep);
+				strcat(buf, tbuf);
 
-        if (BmassFlags.indv) {
-          sprintf(tbuf, "%f%c",
-                  _get_avg( &_Indv[sp].s[yr-1]), sep);
-          strcat( buf, tbuf);
-        }
+				if (BmassFlags.indv)
+				{
+					sprintf(tbuf, "%f%c", _get_avg(&_Indv[sp].s[yr - 1]), sep);
+					strcat(buf, tbuf);
+				}
+			}
 
-      }
-    }
+			if (BmassFlags.indv)
+			{
+				sprintf(tbuf, "%f%c", _get_avg(&_Spp[sp].s[yr - 1]), sep);
+				strcat(buf, tbuf);
+
+				sprintf(tbuf, "%f", _get_avg(&_Indv[sp].s[yr - 1]));
+				strcat(buf, tbuf);
+			}
+			else
+			{
+				sprintf(tbuf, "%f", _get_avg(&_Spp[sp].s[yr - 1]));
+				strcat(buf, tbuf);
+			}
+
+		}
 
     fprintf( f, "%s\n", buf);
   }  /* end of foreach year */
