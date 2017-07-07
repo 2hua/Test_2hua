@@ -242,7 +242,7 @@ static RealF _add_annuals(const GrpIndex rg, const SppIndex sp, const RealF last
     forced = TRUE;
 
     x = 0.;
-    if (RandUni() <= s->seedling_estab_prob) {
+     if (RandUni() <= s->seedling_estab_prob) {
         x = (g->regen_ok) ? _get_annual_maxestab(sp) : 0.;
         //printf("g->regen_ok: %d  , x = %.5f %\n", g->regen_ok, x);
     }
@@ -740,7 +740,7 @@ void rgroup_Establish(void) {
                     continue;
 
                 if (Species[sp]->max_age == 1) {
-                    //printf("Globals.currYear = %d, call to _add_annuals sp=%d Species[sp]->lastyear_relsize : %.5f \n", Globals.currYear, sp, Species[sp]->lastyear_relsize);
+                    printf("Globals.currYear = %d, call to _add_annuals sp=%d Species[sp]->lastyear_relsize : %.5f \n", Globals.currYear, sp, Species[sp]->lastyear_relsize);
                     num_est = _add_annuals(rg, sp, Species[sp]->lastyear_relsize);
                     //printf("num_est for annuals=%d \n",num_est);
                 }                    

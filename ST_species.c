@@ -297,7 +297,8 @@ void Species_Update_Newsize(SppIndex sp, RealF newsize)
 		newsize = -Species[sp]->relsize;
         
 	Species[sp]->relsize += newsize;
-//	printf("After adding or sub relsize Species[sp]->relsize=%.5f \n ",Species[sp]->relsize);
+        Species[sp]->lastyear_relsize =Species[sp]->relsize - newsize;
+	printf("After adding or sub relsize Species[sp]->relsize=%.5f \n ",Species[sp]->relsize);
 
 	// if (Species[sp]->max_age == 1)
 	//  printf("before hard reset: indiv =%d, sp relSize=%0.6f\n\n",Species[sp]->est_count,Species[sp]->relsize );

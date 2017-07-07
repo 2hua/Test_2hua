@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="obj">
+        <df name="sqlite-amalgamation">
+        </df>
+        <df name="sw_src">
+        </df>
+      </df>
+      <df name="sqlite-amalgamation">
+        <in>shell.c</in>
+        <in>sqlite3.c</in>
+        <in>sqlite3.h</in>
+        <in>sqlite3ext.h</in>
+      </df>
+      <df name="sw_src">
+        <df name="testing">
+          <df name="Input">
+            <df name="data_39.0625_-119.4375">
+            </df>
+          </df>
+          <df name="Output">
+          </df>
+        </df>
+        <in>SW_Control.c</in>
+        <in>SW_Control.h</in>
+        <in>SW_Defines.h</in>
+        <in>SW_Files.c</in>
+        <in>SW_Files.h</in>
+        <in>SW_Flow.c</in>
+        <in>SW_Flow_lib.c</in>
+        <in>SW_Flow_lib.h</in>
+        <in>SW_Flow_subs.h</in>
+        <in>SW_Main.c</in>
+        <in>SW_Main_Function.c</in>
+        <in>SW_Markov.c</in>
+        <in>SW_Markov.h</in>
+        <in>SW_Model.c</in>
+        <in>SW_Model.h</in>
+        <in>SW_Output.c</in>
+        <in>SW_Output.h</in>
+        <in>SW_R_lib.c</in>
+        <in>SW_R_lib.h</in>
+        <in>SW_Site.c</in>
+        <in>SW_Site.h</in>
+        <in>SW_Sky.c</in>
+        <in>SW_Sky.h</in>
+        <in>SW_SoilWater.c</in>
+        <in>SW_SoilWater.h</in>
+        <in>SW_Times.h</in>
+        <in>SW_VegEstab.c</in>
+        <in>SW_VegEstab.h</in>
+        <in>SW_VegProd.c</in>
+        <in>SW_VegProd.h</in>
+        <in>SW_Weather.c</in>
+        <in>SW_Weather.h</in>
+        <in>Times.c</in>
+        <in>Times.h</in>
+        <in>filefuncs.c</in>
+        <in>filefuncs.h</in>
+        <in>generic.c</in>
+        <in>generic.h</in>
+        <in>memblock.h</in>
+        <in>myMemory.h</in>
+        <in>mymemory.c</in>
+        <in>rands.c</in>
+        <in>rands.h</in>
+      </df>
+      <df name="testing.sagebrush.master">
+        <df name="Grid_Inputs">
+        </df>
+        <df name="Output">
+        </df>
+        <df name="Stepwat_Inputs">
+          <df name="Input">
+            <df name="sxw">
+              <df name="Input">
+                <df name="randomdata">
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="Output">
+          </df>
+        </df>
+      </df>
+      <in>ST_defines.h</in>
+      <in>ST_environs.c</in>
+      <in>ST_functions.h</in>
+      <in>ST_globals.h</in>
+      <in>ST_grid.c</in>
+      <in>ST_indivs.c</in>
+      <in>ST_main.c</in>
+      <in>ST_mortality.c</in>
+      <in>ST_output.c</in>
+      <in>ST_params.c</in>
+      <in>ST_resgroups.c</in>
+      <in>ST_species.c</in>
+      <in>ST_sql.c</in>
+      <in>ST_stats.c</in>
+      <in>ST_steppe.h</in>
+      <in>ST_structs.h</in>
+      <in>sxw.c</in>
+      <in>sxw.h</in>
+      <in>sxw_environs.c</in>
+      <in>sxw_funcs.h</in>
+      <in>sxw_main.c</in>
+      <in>sxw_module.h</in>
+      <in>sxw_resource.c</in>
+      <in>sxw_soilwat.c</in>
+      <in>sxw_sql.c</in>
+      <in>sxw_tester.c</in>
+      <in>sxw_vars.h</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>4</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

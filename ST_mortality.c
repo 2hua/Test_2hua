@@ -197,7 +197,7 @@ void mort_EndOfYear( void)
 	GrpIndex rg;
 	GroupType *g;
         RealF y = 0;
-        IntS cg_idx = 6;
+        IntS cg_idx = 9;
         RealF x_cheatgrass = Species[cg_idx]->relsize * Species[cg_idx]->mature_biomass; // calculate biomass of cheatgrass
         
         // FILE *out;
@@ -207,6 +207,18 @@ void mort_EndOfYear( void)
         
   
         // printf("[Rui] x_cheatgrass: %f\n",x_cheatgrass);
+        if (x_cheatgrass < 12.05)
+                    {
+                       y = 1 / 300;
+                    } 
+                    if (x_cheatgrass > 12.05){
+                        y = - 0.117 + 0.0093 * x_cheatgrass;
+                        }
+                    if GT (g->killfreq, y)
+                    { 
+                         y = g->killfreq;
+                    }
+                printf("[Rui] FIRE FREQUENCY: %f\n",y);
 	ForEachGroup(rg)
 	{
 		if (Globals.currYear < RGroup[rg]->startyr)
@@ -216,18 +228,7 @@ void mort_EndOfYear( void)
 		}
 
 		g = RGroup[rg];
-                     if (x_cheatgrass < 12.05)
-                    {
-                       y = 1 / RandUniRange(70, 300);
-                    } 
-                    else{
-                        y = - 0.117 + 0.0093 * x_cheatgrass;
-                        }
-                    if GT (g->killfreq, y)
-                    { 
-                         y = g->killfreq;
-                    }
-                printf("[Rui] FIRE FREQUENCY: %f\n",y);
+                     
                 
                     if ((Globals.currYear >= g->killfreq_startyr) && GT(y, 0.))
                     {

@@ -194,6 +194,49 @@ struct resourcegroup_st {
   DepthClass depth;  /* rooting depth class */
   char name[MAX_GROUPNAMELEN +1];
 };
+struct disturbance_st {
+
+  /**** Quantities that can change during model runs *****/
+
+  IntUS *kills,        /* indivs in group killed. index by age killed. */
+        killyr;         /* kill the group in this year; if 0, don't kill, but see killfreq */
+        
+ 
+  Bool extirpated,    /* group extirpated, no more regen */
+       regen_ok;      /* annuals: startyr; TM this is a flag for annuals.  When
+                       * you set the start year for the group this will flag all
+                       * species within that group that establishment will start.
+                       * EG start year = 96 I will have 5 flags for one annual species
+                       * for year 96,97,98,99,100. BUT exptirpate will not un-flag this*/
+
+  /**** Quantities that DO NOT change during model runs *****/
+
+  IntUS 
+	killfreq_startyr,/* start year for kill frequency*/
+        killfreq,       /* kill group at this frequency: <1=prob, >1=# years */
+        extirp,         /* year in which group is extirpated (0==ignore) */
+        
+        veg_prod_type,  /* type of VegProd.  1 for tree, 2 for shrub, 3 for grass, 4 for forb */
+	grazingfrq,     /* grazing effect on group at this frequency: <1=prob, >1=# years */
+        grazingfreq_startyr;/* start year for grazing frequency*/
+  SppIndex species[MAX_SPP_PER_GRP]; /*list of spp belonging to this grp*/
+  RealF 
+        xgrow,        /* ephemeral growth = mm extra ppt * xgrow */
+        slowrate,     /* user-defined growthrate that triggers mortality */
+        ppt_slope[3], /* res. space eqn: slope for wet/dry/norm yrs*/
+        ppt_intcpt[3],/* res. space eqn: intercept for "" ""*/
+		proportion_killed,      /* proportion killing  */
+		proportion_recovered,   /* proportion recovery after killing year */
+        proportion_grazing;     /* proportion grazing on grazing year */
+  Bool succulent,
+       use_extra_res, /* responds to other groups' unused resources */
+       use_me,        /* establish no species of this group if false; TMartyn5.26.15 - this
+                       * is 0 of the onoff in species.in and of the on in rgroup.in */
+       use_mort,      /* use age-independent+slowgrowth mortality?  */
+       est_annually;  /* establish this group every year if true  */
+  DepthClass depth;  /* rooting depth class */
+  char name[MAX_GROUPNAMELEN +1];
+};
 
 struct succulent_st {
   RealF growth[2], /* growth modifier eqn parms for succulents (eqn 10)*/
