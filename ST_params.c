@@ -1078,7 +1078,7 @@ static void _rgroup_add_disturbance( char name[], Int killyr, Int killfreq_start
 /*======================================================*/
   GrpIndex rg;
   
-  rg = RGroup_New();
+  rg = RGroup_Name2Index(name);
   _setNameLen(RGroup[rg]->name, name, MAX_GROUPNAMELEN);
   RGroup[rg]->killyr        = killyr;
   RGroup[rg]->killfreq_startyr = killfreq_startyr;

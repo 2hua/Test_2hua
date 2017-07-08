@@ -81,3 +81,10 @@ Contributors are encouraged, however, to update local clones to [point to the ne
 git remote set-url origin https://github.com/Burke-Lauenroth-Lab/STEPWAT2.git
 ```
 
+## Add run.sh for building & running the program on *nix systems.
+```
+# if need build, usage like this:
+sh run.sh build
+# else
+sh run.sh
+```
