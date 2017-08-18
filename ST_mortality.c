@@ -196,7 +196,9 @@ void mort_EndOfYear( void)
 	//printf("inside mort_EndOfYear() \n");
 	GrpIndex rg;
 	GroupType *g;
-
+        RealF y = 0; /*save rand value */
+        y = RandUni();
+        
 	ForEachGroup(rg)
 	{
 		if (Globals.currYear < RGroup[rg]->startyr)
@@ -204,16 +206,17 @@ void mort_EndOfYear( void)
 			/* don't start trying to kill or grow or do grazing until RGroup[rg]->startyr year */
 			continue;
 		}
-
+	
 		g = RGroup[rg];
-
+	
 		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
 		{
 			if (LT(g->killfreq, 1.0))
 			{
-				if (RandUni() <= g->killfreq)
-				{
+				if (y <= g->killfreq)
+	{
 					g->killyr = Globals.currYear;
+                                       
 				}
 
 			}
@@ -221,9 +224,9 @@ void mort_EndOfYear( void)
 			{
 				g->killyr = Globals.currYear;
 			}
-
+	
 		}
-
+		
 		if (Globals.currYear == RGroup[rg]->extirp)
 		{
 			rgroup_Extirpate(rg);
@@ -235,7 +238,7 @@ void mort_EndOfYear( void)
 
 	}
 
-}
+                }
 
 void grazing_EndOfYear( void){
 
@@ -322,22 +325,22 @@ void proportion_Recovery(void)
 
 		g = RGroup[rg];
 
-		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
-		{
-			if (LT(g->killfreq, 1.0))
-			{
-				if (RandUni() <= g->killfreq)
-				{
-					g->killyr = Globals.currYear;
-				}
-
-			}
-			else if (((Globals.currYear - g->killfreq_startyr) % (IntU) g->killfreq) == 0)
-			{
-				g->killyr = Globals.currYear;
-			}
-
-		}
+//		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
+//		{
+//			if (LT(g->killfreq, 1.0))
+//			{
+//				if (RandUni() <= g->killfreq)
+//				{
+//					g->killyr = Globals.currYear;
+//				}
+//
+//			}
+//			else if (((Globals.currYear - g->killfreq_startyr) % (IntU) g->killfreq) == 0)
+//			{
+//				g->killyr = Globals.currYear;
+//			}
+//
+//		}
 
 		//rgroup proportion recovery
 		if (Globals.currYear == RGroup[rg]->killyr)

@@ -165,8 +165,8 @@ struct resourcegroup_st {
         max_spp,        /* number of species in the group*/
         max_age,        /* longest lifespan in group. used to malloc kills[] */
         startyr,        /* don't start trying to grow until this year */
-		killfreq_startyr,/* start year for kill frequency*/
-        killfreq,       /* kill group at this frequency: <1=prob, >1=# years */
+	killfreq_startyr,/* start year for kill frequency*/
+       
         extirp,         /* year in which group is extirpated (0==ignore) */
         grp_num,        /* index number of this group */
         veg_prod_type,  /* type of VegProd.  1 for tree, 2 for shrub, 3 for grass, 4 for forb */
@@ -181,8 +181,9 @@ struct resourcegroup_st {
         slowrate,     /* user-defined growthrate that triggers mortality */
         ppt_slope[3], /* res. space eqn: slope for wet/dry/norm yrs*/
         ppt_intcpt[3],/* res. space eqn: intercept for "" ""*/
-		proportion_killed,      /* proportion killing  */
-		proportion_recovered,   /* proportion recovery after killing year */
+        killfreq,       /* kill group at this frequency: <1=prob, >1=# years */
+	proportion_killed,      /* proportion killing  */
+	proportion_recovered,   /* proportion recovery after killing year */
         proportion_grazing;     /* proportion grazing on grazing year */
   Bool succulent,
        use_extra_res, /* responds to other groups' unused resources */
