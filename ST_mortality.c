@@ -196,6 +196,7 @@ void mort_EndOfYear( void)
 	//printf("inside mort_EndOfYear() \n");
 	GrpIndex rg;
 	GroupType *g;
+<<<<<<< HEAD
         RealF y = 0;
         IntS cg_idx = 9;
         RealF x_cheatgrass = Species[cg_idx]->relsize * Species[cg_idx]->mature_biomass; // calculate biomass of cheatgrass
@@ -219,6 +220,11 @@ void mort_EndOfYear( void)
                          y = g->killfreq;
                     }
                 printf("[Rui] FIRE FREQUENCY: %f\n",y);
+=======
+        RealF y = 0; /*save rand value */
+        y = RandUni();
+        
+>>>>>>> master
 	ForEachGroup(rg)
 	{
 		if (Globals.currYear < RGroup[rg]->startyr)
@@ -226,8 +232,9 @@ void mort_EndOfYear( void)
 			/* don't start trying to kill or grow or do grazing until RGroup[rg]->startyr year */
 			continue;
 		}
-
+	
 		g = RGroup[rg];
+<<<<<<< HEAD
                      
                 
                     if ((Globals.currYear >= g->killfreq_startyr) && GT(y, 0.))
@@ -236,16 +243,32 @@ void mort_EndOfYear( void)
 			{
 				if (RandUni() <= y)
 				{
+=======
+	
+		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
+		{
+			if (LT(g->killfreq, 1.0))
+			{
+				if (y <= g->killfreq)
+	{
+>>>>>>> master
 					g->killyr = Globals.currYear;
+                                       
 				}
 			}
 			else if (((Globals.currYear - g->killfreq_startyr) % (IntU) y) == 0)
 			{
 				g->killyr = Globals.currYear;
 			}
+<<<<<<< HEAD
 
                     }
 
+=======
+	
+		}
+		
+>>>>>>> master
 		if (Globals.currYear == RGroup[rg]->extirp)
 		{
 			rgroup_Extirpate(rg);
@@ -257,7 +280,7 @@ void mort_EndOfYear( void)
 
 	}
 
-}
+                }
 
 void grazing_EndOfYear( void){
 
@@ -352,6 +375,7 @@ void proportion_Recovery(void)
 		}
 
 		g = RGroup[rg];
+<<<<<<< HEAD
                      if (x_cheatgrass < 12.05)
                     {
                        y = 1 / RandUniRange(70, 300);
@@ -379,6 +403,25 @@ void proportion_Recovery(void)
 			}
 
                     }
+=======
+
+//		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
+//		{
+//			if (LT(g->killfreq, 1.0))
+//			{
+//				if (RandUni() <= g->killfreq)
+//				{
+//					g->killyr = Globals.currYear;
+//				}
+//
+//			}
+//			else if (((Globals.currYear - g->killfreq_startyr) % (IntU) g->killfreq) == 0)
+//			{
+//				g->killyr = Globals.currYear;
+//			}
+//
+//		}
+>>>>>>> master
 
 		//rgroup proportion recovery
 		if (Globals.currYear == RGroup[rg]->killyr)
