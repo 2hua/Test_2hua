@@ -219,6 +219,8 @@ void mort_EndOfYear( void)
                          y = g->killfreq;
                     }
                 printf("[Rui] FIRE FREQUENCY: %f\n",y);
+        RealF y = 0; /*save rand value */
+        y = RandUni();
 	ForEachGroup(rg)
 	{
 		if (Globals.currYear < RGroup[rg]->startyr)
@@ -226,17 +228,16 @@ void mort_EndOfYear( void)
 			/* don't start trying to kill or grow or do grazing until RGroup[rg]->startyr year */
 			continue;
 		}
-
 		g = RGroup[rg];
                      
                 
-                    if ((Globals.currYear >= g->killfreq_startyr) && GT(y, 0.))
-                    {
+    
 			if (LT(y, 1.0))
-			{
+			
 				if (RandUni() <= y)
 				{
 					g->killyr = Globals.currYear;
+                                       
 				}
 			}
 			else if (((Globals.currYear - g->killfreq_startyr) % (IntU) y) == 0)
