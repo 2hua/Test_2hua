@@ -197,6 +197,7 @@ void mort_EndOfYear( void)
 	GrpIndex rg;
 	GroupType *g;
 <<<<<<< HEAD
+<<<<<<< HEAD
         RealF y = 0;
         IntS cg_idx = 9;
         RealF x_cheatgrass = Species[cg_idx]->relsize * Species[cg_idx]->mature_biomass; // calculate biomass of cheatgrass
@@ -221,10 +222,33 @@ void mort_EndOfYear( void)
                     }
                 printf("[Rui] FIRE FREQUENCY: %f\n",y);
 =======
+||||||| merged common ancestors
+=======
+        RealF y = 0;
+        IntS cg_idx = 5;
+        RealF x_cheatgrass = Species[cg_idx]->relsize * Species[cg_idx]->mature_biomass; // calculate biomass of cheatgrass
+        
+        // FILE *out;
+        
+        
+  
+        printf("[Rui] x_cheatgrass: %f\n",x_cheatgrass);
+        
+        // Rui
+        // problem 2: we assume that the value of X in the prediction model can be obtained from Species[cg_idx].
+        // however, we may not refer to Species, or the index "cg_idx" may not be correct
+        // Problem 3: note that the original value "?-> freq" is no longer used now, but we did not change its 
+        // value
+>>>>>>> fire_testing
         RealF y = 0; /*save rand value */
         y = RandUni();
+<<<<<<< HEAD
         
 >>>>>>> master
+||||||| merged common ancestors
+        
+=======
+>>>>>>> fire_testing
 	ForEachGroup(rg)
 	{
 		if (Globals.currYear < RGroup[rg]->startyr)
@@ -233,6 +257,7 @@ void mort_EndOfYear( void)
 			continue;
 		}
 	
+<<<<<<< HEAD
 		g = RGroup[rg];
 <<<<<<< HEAD
                      
@@ -246,9 +271,33 @@ void mort_EndOfYear( void)
 =======
 	
 		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
+||||||| merged common ancestors
+		g = RGroup[rg];
+	
+		if ((Globals.currYear >= g->killfreq_startyr) && GT(g->killfreq, 0.))
+=======
+		g = RGroup[rg]; 
+                // For test
+                if (x_cheatgrass < 25.484)
+                    {
+                       y = RandUniRange(70, 300);
+                    }
+                    
+                    else{
+                        y =1 / (- 0.117 + 0.0093 * x_cheatgrass);
+                        }
+                printf("[Rui] x_firefrequency: %f\n",y);
+                // End test 
+		if ((Globals.currYear >= g->killfreq_startyr) && GT(y, 0.)
+>>>>>>> fire_testing
 		{
-			if (LT(g->killfreq, 1.0))
+			if (LT(y, 1.0))
 			{
+				if (RandUni() <= y)
+				{
+				if (RandUni() <= g->killfreq)
+				{
+=======
 				if (y <= g->killfreq)
 	{
 >>>>>>> master
@@ -428,7 +477,7 @@ void proportion_Recovery(void)
 		{
 			Int i;
 			ForEachEstSpp2( rg, i)
-			{
+		{
 				Species_Proportion_Recovery(RGroup[rg]->est_spp[i], 6,
 						RGroup[rg]->proportion_recovered,
 						RGroup[rg]->proportion_killed);

@@ -149,6 +149,7 @@ struct resourcegroup_st {
         res_avail,    /* resource available from environment X competition */
         res_extra,    /* if requested, resource above 1.0 when PR < 1.0 */
         pr,           /* resources required / resources available */
+        lastyear_relsize,    /* relsize from the previous year, used for annual establishment */
         relsize;      /* size of all species' indivs' relsizes scaled to 1.0 */
   SppIndex est_count, /* number of species actually established in group*/
            est_spp[MAX_SPP_PER_GRP]; /*list of spp actually estab in grp*/

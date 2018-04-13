@@ -36,7 +36,12 @@ void indiv_proportion_Recovery(IndivType *ndv, int killType,
 void indiv_proportion_Grazing(IndivType *ndv, RealF proportionGrazing);
 
 void _delete(IndivType *ndv);
+<<<<<<< HEAD
 void save_annual_species_relsize(void);
+||||||| merged common ancestors
+=======
+//void save_annual_species_relsize(void);
+>>>>>>> fire_testing
 
 /*------------------------------------------------------*/
 /* Modular functions only used on one or two specific   */
@@ -297,8 +302,15 @@ void Species_Update_Newsize(SppIndex sp, RealF newsize)
 		newsize = -Species[sp]->relsize;
         
 	Species[sp]->relsize += newsize;
+<<<<<<< HEAD
         Species[sp]->lastyear_relsize =Species[sp]->relsize - newsize;
 	printf("After adding or sub relsize Species[sp]->relsize=%.5f \n ",Species[sp]->relsize);
+||||||| merged common ancestors
+//	printf("After adding or sub relsize Species[sp]->relsize=%.5f \n ",Species[sp]->relsize);
+=======
+        Species[sp]->lastyear_relsize += newsize;
+	//printf("After adding or sub lastyear_relsize Species[sp]->relsize=%.5f \n ",Species[sp]->lastyear_relsize);
+>>>>>>> fire_testing
 
 	// if (Species[sp]->max_age == 1)
 	//  printf("before hard reset: indiv =%d, sp relSize=%0.6f\n\n",Species[sp]->est_count,Species[sp]->relsize );
@@ -329,6 +341,58 @@ void Species_Update_Newsize(SppIndex sp, RealF newsize)
 #undef xD_DELTA
 #undef ZERO
 }
+
+//void save_annual_species_relsize(SppIndex sp, RealF newsize) {
+  //  int sp = 0
+//#define xD_DELTA (20*D_DELTA)
+//#define ZERO(x) \
+( (sizeof(x) == sizeof(float)) \
+  ? ((x)>-xF_DELTA && (x)<xF_DELTA) \
+  : ((x)>-xD_DELTA && (x)<xD_DELTA) )
+
+//	GrpIndex rg;
+
+//	rg = Species[sp]->res_grp;
+
+//	if (LT(Species[sp]->relsize, 0.0))
+//	{
+//		LogError(logfp, LOGWARN,
+//				"Species_Update_Newsize: %s relsize < 0.0 (=%.1f)"
+//						" year=%d, iter=%d", Species[sp]->name,
+//				Species[sp]->relsize, Globals.currYear, Globals.currIter);
+//	}
+//	if (GT(Species[sp]->relsize, 100.))
+//	{
+//		LogError(logfp, LOGNOTE,
+//				"Species_Update_Newsize: %s relsize very large (=%.1f)"
+//						" year=%d, iter=%d", Species[sp]->name,
+//				Species[sp]->relsize, Globals.currYear, Globals.currIter);
+//	}
+
+//	printf("Inside Species_Update_Newsize() spIndex=%d, name =%s,Species[sp]->relsize=%.5f, newsize=%.5f \n ",sp, Species[sp]->name,Species[sp]->relsize, newsize);
+	/* if this cond. true, we're off a bit from zeroing. fix it */
+//	if (Species[sp]->est_count == 1 && LT(newsize, -Species[sp]->relsize))
+//		newsize = -Species[sp]->relsize;
+  //      Species[sp]->relsize += newsize;
+    //    Species[sp]->lastyear_relsize += newsize;
+	//printf("After adding or sub lastyear_relsize Species[sp]->relsize=%.5f \n ",Species[sp]->lastyear_relsize);
+
+    
+//}
+//RGroup_Update_Newsize(rg);
+
+	//if ( Species[sp]->max_age != 1) {
+	//above deleted to include annuals (TEM 10-27-2015)
+	/* make sure zeros are actually zeroed */
+//	if (Species[sp]->est_count < 0)
+//		Species[sp]->est_count = 0;
+	//}
+//	if (ZERO(Species[sp]->relsize))
+//		Species[sp]->relsize = 0.0;
+
+#undef xF_DELTA
+#undef xD_DELTA
+#undef ZERO
 
 /**************************************************************/
 SppIndex species_New(void)
@@ -404,6 +468,9 @@ SppIndex Species_Name2Index(const char *name)
 	}
 	return ((SppIndex) sp);
 }
+
+/**************************************************************/
+
 
 void Species_Annual_Kill(const SppIndex sp, int killType)
 {
@@ -614,6 +681,7 @@ void Species_Kill(const SppIndex sp, int killType)
 
 }
 
+<<<<<<< HEAD
 /**************************************************************/
 void save_annual_species_relsize() {
     int sp = 0;
@@ -630,6 +698,13 @@ void save_annual_species_relsize() {
 
 /**************************************************************/
 
+||||||| merged common ancestors
+=======
+
+
+/**************************************************************/
+
+>>>>>>> fire_testing
 #ifdef DEBUG_MEM
 #include "myMemory.h"
 /*======================================================*/

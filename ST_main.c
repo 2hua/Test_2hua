@@ -64,7 +64,12 @@ extern Bool isPartialSoilwatOutput;
 
   void _kill_annuals(void);
   void _kill_extra_growth(void);
+<<<<<<< HEAD
   void save_annual_species_relsize(void);
+||||||| merged common ancestors
+=======
+  void save_annual_species_relsize(SppIndex sp, RealF newsize);
+>>>>>>> fire_testing
 
 #ifdef DEBUG_MEM
   #define chkmem_f CheckMemoryIntegrity(FALSE);
@@ -246,9 +251,16 @@ int main(int argc, char **argv) {
 
            // Added functions for Grazing and mort_end_year as proportional killing effect before exporting biomass end of the year
 			grazing_EndOfYear();
+<<<<<<< HEAD
                         
             //save last year's species relative size            
             save_annual_species_relsize();
+||||||| merged common ancestors
+=======
+                        
+            //save last year's species relative size            
+//                   save_annual_species_relsize();
+>>>>>>> fire_testing
 
 			mort_EndOfYear();
 
